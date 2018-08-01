@@ -411,7 +411,11 @@ EOD;
   /* リンク作成 */
   function make_link($matches) {
     global $CONF;
-    list ($loc_id, $link_str, $zoom) = explode(',', $matches[1]);
+    $p = explode(',', $matches[1]);
+    $loc_id = $p[0];
+    $link_str = isset($p[1]) ? $p[1] : '';
+    $zoom     = isset($p[2]) ? $p[2] : '';
+    
     if ($zoom == '') {
       $zoom = $this->getOption('gmap_zoomlevel');
     }

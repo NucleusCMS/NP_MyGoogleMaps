@@ -397,11 +397,12 @@ EOD;
 
   /* 表示(パース)前の処理 */
   function event_PreItem(&$data) {
-    $data["item"]->body =
+    if(!isset($data['item'])) return;
+    $data['item']->body =
       preg_replace_callback("/<\%MyGoogleMaps\((.*?)\)%\>/",
                             array(&$this, 'make_link'),
                             $data["item"]->body);
-    $data["item"]->more =
+    $data['item']->more =
       preg_replace_callback("/<\%MyGoogleMaps\((.*?)\)%\>/",
                             array(&$this, 'make_link'),
                             $data["item"]->more);

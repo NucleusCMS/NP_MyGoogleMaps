@@ -150,8 +150,12 @@ class NP_MyGoogleMaps extends NucleusPlugin {
   }
 
   /* スキン変数 */
-  function doSkinVar($skinType, $param1, $param2, $param3) {
+  function doSkinVar($skinType) {
     global $CONF;
+    $p = func_get_args();
+    $param1 = $p[1];
+    $param2 = $p[2];
+    $param3 = $p[3];
     $loc_id = $param3 ? $param3 : 1;
     $zoom = $this->getOption('gmap_zoomlevel');
 
